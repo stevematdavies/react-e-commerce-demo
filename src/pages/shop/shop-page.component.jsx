@@ -1,5 +1,5 @@
 import React from "react";
-import CollectionPreview from "../../componeents/collection-preview/collection.peview.component";
+import CollectionPreview from "../../components/collection-preview/collection.peview.component";
 import SHOP_DATA from "./shop.data";
 
 import './shop-page.styles.css'
