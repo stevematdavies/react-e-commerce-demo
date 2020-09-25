@@ -1,9 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
+import {removeItem} from "../../redux/cart/cart.actions";
 
 import './checkout-item.styles.scss'
 
-const CheckoutItem = ({item: {imageUrl, name, quantity, price}}) => (
+const CheckoutItem = ({item: {id, imageUrl, name, quantity, price}, removeItem}) => (
   <div className="checkout-item">
     <div className="image-container">
       <img src={imageUrl} alt={name}/>
@@ -11,8 +12,14 @@ const CheckoutItem = ({item: {imageUrl, name, quantity, price}}) => (
     <span className="name">{name}</span>
     <span className="quantity">{quantity}</span>
     <span className="price">{price}</span>
-    <div className="remove">&#10005;</div>
+    <div className="remove" onClick={() => removeItem(id)}>
+      <span className="remove-button">&#10005;</span>
+    </div>
   </div>
 )
 
-export default connect()(CheckoutItem)
+const mapDispatchToProps = dispatch => ({
+  removeItem: itemID => dispatch(removeItem(itemID))
+})
+
+export default connect(null,mapDispatchToProps)(CheckoutItem)

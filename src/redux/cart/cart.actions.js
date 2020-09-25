@@ -8,3 +8,8 @@ export const addItem = item => ({
   type: actionTypes.cart.ADD_ITEM,
   payload: item
 })
+
+export const removeItem = itemID => ({
+  type: actionTypes.cart.REMOVE_ITEM,
+  payload: itemID
+})
