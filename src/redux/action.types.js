@@ -4,6 +4,6 @@ export const actionTypes = {
   },
   cart: {
     TOGGLE_SHOPPING_CART: 'TOGGLE_SHOPPING_CART',
-    ADD_ITEM: 'CART_ADD_ITE',
+    ADD_ITEM: 'CART_ADD_ITEM',
   }
 }
