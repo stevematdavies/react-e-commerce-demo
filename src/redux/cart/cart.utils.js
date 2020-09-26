@@ -1,12 +1,8 @@
-const _findItemFromItems = (existingItems, itemID) =>
-  existingItems.find(item => item.id === itemID)
-
-const _removeItemFromItems = (existingItems, itemID) =>
-  existingItems.filter(item => item.id !== itemID)
+const _findItem = (items, item) => items.find(i => i.id === item.id)
+const _removeItem = (items, item) => items.filter(i => i.id !== item.id)
 
 export const addItemToCart = (existingItems, newItem) => {
-  const exists = existingItems.find(item => item.id === newItem.id)
-
+  const exists = _findItem(existingItems, newItem)
   if (exists) {
     return existingItems.map(item =>
       item.id === newItem.id
@@ -18,23 +14,14 @@ export const addItemToCart = (existingItems, newItem) => {
 }
 
 
-export const removeItemsFromCart = (existingItems, itemID) => {
-  const exists = existingItems.find(item => item.id === itemID)
-  if (exists) {
-    return _removeItemFromItems(existingItems, itemID)
-  }
-  return [...existingItems]
-}
-
-export const decreaseQuantityOrRemoveItem = (existingItems, currentItem) => {
-  const exists = existingItems.find(item => item.id === currentItem.id)
-  if (exists.quantity === 1) {
-    return _removeItemFromItems(existingItems, exists.id)
+export const removeItemsFromCart = (existingItems, itemToRemove) => {
+  const existingCartItem = _findItem(existingItems, itemToRemove)
+  if (existingCartItem && existingCartItem.quantity === 1) {
+    return _removeItem(existingItems, itemToRemove)
   }
   return existingItems.map(item =>
-    item.id === currentItem.id
+    item.id === itemToRemove.id
       ? {...item, quantity: item.quantity - 1}
       : item
   )
 }
-
