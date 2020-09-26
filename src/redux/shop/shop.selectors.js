@@ -1,6 +1,6 @@
 import {createSelector} from "reselect";
 
-const selectShop = ({collections}) => collections
+const selectShop = ({shop}) => shop
 
 export const selectCollections = createSelector(
   [selectShop],
