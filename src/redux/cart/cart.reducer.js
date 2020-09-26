@@ -1,5 +1,5 @@
 import {actionTypes} from "../action.types";
-import { addItemToCart, removeItemsFromCart,decreaseQuantityOrRemoveItem} from "./cart.utils";
+import {addItemToCart, removeItemsFromCart} from "./cart.utils";
 
 const INITIAL_STATE = {
   cartIsVisible: false,
