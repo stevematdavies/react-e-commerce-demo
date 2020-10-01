@@ -18,6 +18,10 @@ class ShopPage extends React.Component {
         this.props.updateCollections(convertCollectionsSnapshotToMap(snapshot)))
   }
 
+  componentWillUnmount() {
+    this.unsubScribeFromSnapShot = null
+  }
+
   render() {
     const {match} = this.props
     return (
