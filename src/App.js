@@ -1,11 +1,11 @@
 import React from 'react';
-import {Route, Switch, Redirect} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
 import Header from "./components/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import ShopPage from './pages/shop/shop-page.component'
 import SignInAndSignUpPage from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.component"
 import CheckoutPage from "./pages/checkout/checkout-page.component";
-import {auth, createUserProfileDocument} from './firebase/firebase.utils'
+import {addCollectionAndDocuments, auth, createUserProfileDocument} from './firebase/firebase.utils'
 import {connect} from 'react-redux'
 import {setCurrentUser} from "./redux/user/user.actions";
 import {createStructuredSelector} from "reselect";
@@ -19,6 +19,7 @@ class App extends React.Component {
   unsubScribeFromAuth = null
 
   componentDidMount() {
+
     const {setCurrentUser} = this.props
     this.unsubScribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -31,8 +32,7 @@ class App extends React.Component {
           }
         )
       }
-      setCurrentUser(userAuth)
-    })
+      setCurrentUser(userAuth)})
   }
 
   componentWillUnmount() {
