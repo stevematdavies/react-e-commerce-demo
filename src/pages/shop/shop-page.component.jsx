@@ -13,7 +13,6 @@ class ShopPage extends React.Component {
   unsubScribeFromSnapShot = null
 
   componentDidMount() {
-    firestore.collection('collections')
     this.unsubScribeFromSnapShot = firestore.collection('collections')
       .onSnapshot(async snapshot =>
         this.props.updateCollections(convertCollectionsSnapshotToMap(snapshot)))
