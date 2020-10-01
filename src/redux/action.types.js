@@ -7,5 +7,8 @@ export const actionTypes = {
     ADD_ITEM: 'CART_ADD_ITEM',
     REMOVE_ITEM: 'CART_REMOVE_ITEM',
     CLEAR_ITEM_FROM_CART: 'CLEAR_ITEM_FROM_CART'
+  },
+  shop: {
+    UPDATE_COLLECTIONS: 'UPDATE_COLLECTIONS'
   }
 }

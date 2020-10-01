@@ -45,6 +45,19 @@ export const addCollectionAndDocuments = async (collectionKey, collectionItems) 
   return await batch.commit()
 }
 
+export const convertCollectionsSnapshotToMap = collectionsSnapshot =>
+  collectionsSnapshot.docs.map(doc => {
+    const {title, items} = doc.data()
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+  }).reduce((a, c) => {
+    a[c.title.toLowerCase()] = c
+    return a
+  }, {})
 
 // Initialize Firebase
 firebase.initializeApp(config)
