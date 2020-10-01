@@ -20,7 +20,7 @@ const Header = ({currentUser, cartIsVisible}) => (
       {
         currentUser
           ? <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
-          : <OptionLink className='option' to='/sign-in'>SIGN IN</OptionLink>
+          : <OptionLink to='/sign-in'>SIGN IN</OptionLink>
       }
       <CartIcon/>
     </OptionsContainer>
